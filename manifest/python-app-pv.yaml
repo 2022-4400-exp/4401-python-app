@@ -15,12 +15,12 @@ spec:
         app: python-app
     spec:
       containers:
-      - image: docker pull ghcr.io/2022-4400-exp/4401-python-app:c0e234f8e8ba02ee676ca23878a3423bedf4432b@sha256:0f8cf7acc4efae6a636ecaf4bb80d3c78f8c1f72a0d657e7ab72e2d5f228e487
-        name: python-app
-        volumeMounts:
-        - mountPath: /var/python-app
-          name: python-app-data-mount
+        - image: ghcr.io/2022-4400-exp/4401-python-app:04ab099242fe8d06742de2615f8af16b00779dbe
+          name: python-app
+          volumeMounts:
+            - mountPath: /var/python-app
+              name: python-app-data-mount
       volumes:
-      - name: python-app-data-mount
-        persistentVolumeClaim:
-          claimName: python-app-data
+        - name: python-app-data-mount
+          persistentVolumeClaim:
+            claimName: python-app-data
