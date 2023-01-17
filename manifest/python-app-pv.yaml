@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: python-app
+  name: python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - image: docker pull ghcr.io/2022-4400-exp/4401-python-app:d18a14b67a34fc2aed945fe6cb647de9a1103359@sha256:27975a5b3ce48807c238ec7d65be849ef97fbb8acf7888e5785d3995a4bbde8a
+        name: python-app
+        volumeMounts:
+        - mountPath: /var/python-app
+          name: python-app-data-mount
+      volumes:
+      - name: python-app-data-mount
+        persistentVolumeClaim:
+          claimName: python-app-data
